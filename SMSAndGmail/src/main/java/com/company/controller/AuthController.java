@@ -13,6 +13,12 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    /**
+     * registration and sending code via email
+     * @param userDto
+     * @return responseEntity
+     */
+
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody UserDto userDto) {
 
@@ -22,10 +28,10 @@ public class AuthController {
     }
 
     /**
-     *
+     * checking mail code is valid
      * @param jwt
      * @param code
-     * @return
+     * @return responseEntity
      */
     @GetMapping("/check/{code}")
     public ResponseEntity<UserDto> checkMailCode(@RequestHeader("Authorization") String jwt, @PathVariable("code") String code) {
